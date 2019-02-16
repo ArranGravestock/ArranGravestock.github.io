@@ -161,7 +161,7 @@ a:hover {
     margin-left: 1em;
 }
 
-button {
+#skip {
     background-color: #a8a8a8;
     border: 0;
     color: white;
@@ -174,11 +174,7 @@ button {
     font-size: 16px;
 }
 
-button:focus {
-    outline: none;
-}
-
-button:hover {
+#skip:hover {
     cursor: pointer;
 }
 
