@@ -32,6 +32,8 @@
       </div>
 
       <ul id="list"></ul>
+
+      <button id="skip"><a href="https://arrangravestock.co.uk">Skip!</a></button>
     </div>
     <script>
       var input = document.getElementById("input");
@@ -78,11 +80,7 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
 
       function autoplay(skip = false) {
         if (skip) {
-          var type_wrapper = document.getElementsByClassName(
-            "Typewriter__wrapper"
-          )[0];
 
-          //type_wrapper.innerHTML = "";
           appendLi(list, `<i>cat /Documents/about.txt</i>`, false);
           appendLi(list, about, true);
 
