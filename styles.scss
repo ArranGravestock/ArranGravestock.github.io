@@ -1,0 +1,115 @@
+body {
+  background-color: black;
+  font-family: Arial;
+  color: #00FF00;
+  font-size: 1em;
+}
+
+p {
+  margin: 0;
+  line-height: 22px;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style: none;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    padding-bottom: 3px;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: initial;
+}
+
+.form-wrapper {
+  padding-bottom: 5px;
+}
+
+input {
+  background-color: black;
+  border: 0;
+  font-size: 1em;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &::placeholder {
+    color: inherit;
+  }
+}
+
+label:before, li:before {
+  content: '[root@localhost]';
+  padding-right: 5px;
+}
+
+span {
+  padding-bottom: 3px;
+}
+
+.hide-root {
+  &:before {
+      display: none;
+  }
+}
+
+#before {
+  margin-right: 5px;
+}
+
+
+.form-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  
+  input {
+    flex-grow: 1;
+  }
+}
+
+
+.blink {
+  animation: blink-animation 1s infinite;
+  -webkit-animation: blink-animation 1s infinite;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+  
+  50% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
