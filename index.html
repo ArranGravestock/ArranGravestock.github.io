@@ -39,7 +39,7 @@
       var input = document.getElementById("input");
       var list = document.getElementById("list");
       var false_input = document.getElementById("false-input");
-      var skip = document.getElementById('skip');
+      var skip_button = document.getElementById('skip');
 
       var initialised = false;
 
@@ -69,9 +69,8 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
 <p>[Dissertation] Created a Progressive Web Application (PWA) with React.js with SASS, which consumes data through a custom Express-js web API to increase the user experience in smart-products; reducing product interaction from 'many-to-many' to 'one-to-one'.  A Raspberry Pi 3 (acts as the hub for components) using Node.js consumes sensor and I/O data, to automate and increase security in your home which stores real-time data using MySQL. The data is analysed through the PWA providing real-time readings and statistical data about their home.</p><br>`;
 
       if (hasSeen) {
-          console.log('skipp')
         autoplay(true);
-        skip.classList.add('hide');
+        skip_button.classList.add('hide');
       }
 
       document.addEventListener("click", () => {
@@ -115,6 +114,8 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
 
           input.classList.add("hide");
 
+          appendLi(list, `<i>bash autoplay.sh</i>`, false);
+
           typewriter
             .typeString("cat /Documents/about.txt")
             .pauseFor(200)
@@ -131,7 +132,6 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
               appendLi(list, `<i>cat /Documents/work.txt</i>`, false);
               appendLi(list, work, true);
             })
-            //.pauseFor(4000)
 
             .typeString("cat /Documents/education.txt")
             .pauseFor(200)
@@ -140,7 +140,6 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
               appendLi(list, `<i>cat /Documents/education.txt</i>`, false);
               appendLi(list, education, true);
             })
-            //.pauseFor(4000)
 
             .typeString("cat /Documents/projects.txt")
             .pauseFor(200)
@@ -149,7 +148,6 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
               appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
               appendLi(list, projects, true);
             })
-            //.pauseFor(4000)
 
             .typeString("cat /Documents/socials.txt")
             .pauseFor(200)
@@ -158,7 +156,9 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
               appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
               appendLi(list, socials, true);
             })
-            //.pauseFor(3000)
+            .callFunction(() => {
+                skip_button.classList.add('hide');
+            })
 
             .start();
         }
