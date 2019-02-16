@@ -34,12 +34,14 @@
       <ul id="list"></ul>
 
       <a id="skip" href="https://arrangravestock.co.uk">Skip!</a>
+      <a id="replay" href="https://arrangravestock.co.uk">Replay!</a>
     </div>
     <script>
       var input = document.getElementById("input");
       var list = document.getElementById("list");
       var false_input = document.getElementById("false-input");
       var skip_button = document.getElementById('skip');
+      var replay_button = document.getElementById('replay');
 
       var initialised = false;
 
@@ -79,6 +81,12 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
           initialised = true;
         }
       });
+
+      replay.addEventListener('click', () => {
+          localStorage.setItem("skip", "false");
+
+          window.location = "https://arrangravestock.co.uk";
+      })
 
       function autoplay(skip = false) {
         if (skip) {
