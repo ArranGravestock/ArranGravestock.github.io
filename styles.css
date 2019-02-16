@@ -155,4 +155,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.manual-margin {
+    margin-left: 1em;
+}
+
 /*# sourceMappingURL=styles.css.map */

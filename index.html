@@ -40,12 +40,7 @@
 
       var initialised = false;
 
-      document.addEventListener("click", () => {
-        if (!initialised) {
-          autoplay();
-          initialised = true;
-        }
-      });
+      let hasSeen = localStorage.getItem("skip", "true");
 
       var about = `<p>Hello and welcome! My name is Arran, I am currently working as a Junior Front End Developer at ProdPad. Let's chat over beer sometime! 🍺</p><br>`;
 
@@ -57,9 +52,9 @@ Raspberry pi deployment service: <a target="_blank" rel="noopener" href="https:/
 Notekeep: <a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/websocket-notes">https://github.com/ArranGravestock/websocket-notes</a> <br>
 Squareman: <a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/path-finding-aiie">https://github.com/ArranGravestock/path-finding-aiie</a> <br>
 Home automation: [<br>
-<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-server">https://github.com/ArranGravestock/home-model-server</a><br>
-<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-client">https://github.com/ArranGravestock/home-model-client</a><br>
-<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-api">https://github.com/ArranGravestock/home-model-api</a><br>
+<a class="manual-margin" target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-server">https://github.com/ArranGravestock/home-model-server</a><br>
+<a class="manual-margin" target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-client">https://github.com/ArranGravestock/home-model-client</a><br>
+<a class="manual-margin" target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-api">https://github.com/ArranGravestock/home-model-api</a><br>
 ]</p><br>`;
 
       var socials = `<p>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/arran-gravestock-926899115">https://www.linkedin.com/in/arran-gravestock-926899115</a><br>
@@ -70,75 +65,100 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
       var education = `<p>[BSc (Hons) Computer Science: <i>2.1</i> - University of Brighton]<p>
 <p>[Dissertation] Created a Progressive Web Application (PWA) with React.js with SASS, which consumes data through a custom Express-js web API to increase the user experience in smart-products; reducing product interaction from ‘many-to-many’ to ‘one-to-one’.  A Raspberry Pi 3 (acts as the hub for components) using Node.js consumes sensor and I/O data, to automate and increase security in your home which stores real-time data using MySQL. The data is analysed through the PWA providing real-time readings and statistical data about their home.</p><br>`;
 
-      input.addEventListener("keypress", function(e) {
-        if (e.keyCode == 13) {
-          if (input.value == "bash autoplay.sh") {
-            autoplay();
-          }
+      if (hasSeen) {
+        autoplay(true);
+      }
 
-          input.value = "";
+      document.addEventListener("click", () => {
+        if (!initialised && !hasSeen) {
+          autoplay();
+          initialised = true;
         }
       });
 
-      function autoplay() {
-        var typewriter = new Typewriter(false_input, {
-          loop: false,
-          cursor: "",
-          delay: 50
-        });
+      function autoplay(skip = false) {
+        if (skip) {
+          var type_wrapper = document.getElementsByClassName(
+            "Typewriter__wrapper"
+          )[0];
 
-        var type_wrapper = document.getElementsByClassName(
-          "Typewriter__wrapper"
-        )[0];
+          //type_wrapper.innerHTML = "";
+          appendLi(list, `<i>cat /Documents/about.txt</i>`, false);
+          appendLi(list, about, true);
 
-        input.classList.add("hide");
+          appendLi(list, `<i>cat /Documents/work.txt</i>`, false);
+          appendLi(list, work, true);
 
-        typewriter
-          .typeString("cat /Documents/about.txt")
-          .pauseFor(200)
-          .callFunction(() => {
-            type_wrapper.innerHTML = "";
-            appendLi(list, `<i>cat /Documents/about.txt</i>`, false);
-            appendLi(list, about, true);
-          })
+          appendLi(list, `<i>cat /Documents/education.txt</i>`, false);
+          appendLi(list, education, true);
 
-          .typeString("cat /Documents/work.txt")
-          .pauseFor(200)
-          .callFunction(() => {
-            type_wrapper.innerHTML = "";
-            appendLi(list, `<i>cat /Documents/work.txt</i>`, false);
-            appendLi(list, work, true);
-          })
-          //.pauseFor(4000)
+          appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
+          appendLi(list, projects, true);
 
-          .typeString("cat /Documents/education.txt")
-          .pauseFor(200)
-          .callFunction(() => {
-            type_wrapper.innerHTML = "";
-            appendLi(list, `<i>cat /Documents/education.txt</i>`, false);
-            appendLi(list, education, true);
-          })
-          //.pauseFor(4000)
+          appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
+          appendLi(list, socials, true);
+        } else {
+          localStorage.setItem("skip", "true");
 
-          .typeString("cat /Documents/projects.txt")
-          .pauseFor(200)
-          .callFunction(() => {
-            type_wrapper.innerHTML = "";
-            appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
-            appendLi(list, projects, true);
-          })
-          //.pauseFor(4000)
+          var typewriter = new Typewriter(false_input, {
+            loop: false,
+            cursor: "",
+            delay: 50
+          });
 
-          .typeString("cat /Documents/socials.txt")
-          .pauseFor(200)
-          .callFunction(() => {
-            type_wrapper.innerHTML = "";
-            appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
-            appendLi(list, socials, true);
-          })
-          //.pauseFor(3000)
+          var type_wrapper = document.getElementsByClassName(
+            "Typewriter__wrapper"
+          )[0];
 
-          .start();
+          input.classList.add("hide");
+
+          typewriter
+            .typeString("cat /Documents/about.txt")
+            .pauseFor(200)
+            .callFunction(() => {
+              type_wrapper.innerHTML = "";
+              appendLi(list, `<i>cat /Documents/about.txt</i>`, false);
+              appendLi(list, about, true);
+            })
+
+            .typeString("cat /Documents/work.txt")
+            .pauseFor(200)
+            .callFunction(() => {
+              type_wrapper.innerHTML = "";
+              appendLi(list, `<i>cat /Documents/work.txt</i>`, false);
+              appendLi(list, work, true);
+            })
+            //.pauseFor(4000)
+
+            .typeString("cat /Documents/education.txt")
+            .pauseFor(200)
+            .callFunction(() => {
+              type_wrapper.innerHTML = "";
+              appendLi(list, `<i>cat /Documents/education.txt</i>`, false);
+              appendLi(list, education, true);
+            })
+            //.pauseFor(4000)
+
+            .typeString("cat /Documents/projects.txt")
+            .pauseFor(200)
+            .callFunction(() => {
+              type_wrapper.innerHTML = "";
+              appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
+              appendLi(list, projects, true);
+            })
+            //.pauseFor(4000)
+
+            .typeString("cat /Documents/socials.txt")
+            .pauseFor(200)
+            .callFunction(() => {
+              type_wrapper.innerHTML = "";
+              appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
+              appendLi(list, socials, true);
+            })
+            //.pauseFor(3000)
+
+            .start();
+        }
       }
 
       function appendLi(ul, text, renderRoot) {
