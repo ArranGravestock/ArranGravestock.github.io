@@ -32,6 +32,10 @@ ul li {
   padding-bottom: 3px;
 }
 
+.Typewriter__cursor {
+  display: none;
+}
+
 .hide {
   display: none;
 }
@@ -110,6 +114,9 @@ span {
   -webkit-animation: blink-animation 1s infinite;
 }
 
+.Typewriter__cursor {
+    display: none;
+}
 @-webkit-keyframes blink-animation {
   0% {
     opacity: 1;
