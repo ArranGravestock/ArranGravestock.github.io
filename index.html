@@ -33,15 +33,13 @@
 
       <ul id="list"></ul>
 
-      <a id="skip" href="https://arrangravestock.co.uk">Skip!</a>
-      <a id="replay">Replay!</a>
+      <span id="skip">Skip!</span>
     </div>
     <script>
       var input = document.getElementById("input");
       var list = document.getElementById("list");
       var false_input = document.getElementById("false-input");
       var skip_button = document.getElementById('skip');
-      var replay_button = document.getElementById('replay');
 
       var hasSeen =  localStorage.getItem("skip") == 'true';
 
@@ -75,17 +73,20 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
       }
       
       document.addEventListener("click", () => {
-        var ls = localStorage.getItem('skip');
+        var ls = localStorage.getItem('skip') == 'true';
+        console.log(ls)
         if (!ls) {
           autoplay();
         }
       });
 
-      replay.addEventListener('click', () => {
-          localStorage.setItem("skip", "false");
-
-          window.location = "https://arrangravestock.co.uk";
+      skip_button.addEventListener('click', () => {
+        window.location = 'https://arrangravestock.co.uk';
       })
+
+
+      
+
 
       function autoplay(skip = false) {
         if (skip) {
