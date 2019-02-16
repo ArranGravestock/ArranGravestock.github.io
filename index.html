@@ -1,157 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Arran Gravestock</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
-    
-    
-    <meta name="description" content="Arran Gravestock - Developer">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="blogger, arran, gravestock, developer, dev, node, javascript, vue, web" />
+
+    <meta name="description" content="Arran Gravestock - Developer" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="blogger, arran, gravestock, developer, dev, node, javascript, vue, web"
+    />
     <meta property="og:title" content="Arran Gravestock" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arrangravestock.co.uk/" />
     <meta property="og:description" content="Arran Gravestock - Developer" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="android-chrome-192x192.png"
+    />
   </head>
   <body>
     <div id="app">
+      <div class="form-wrapper">
+        <label id="before"><span class="blink">_</span></label>
+        <input id="input" value="bash autoplay.sh" />
+        <div id="false-input"></div>
+      </div>
 
-        <div class="form-wrapper">
-            <label id="before"><span class="blink"> ></span></label>
-            <input id="input" value="bash autoplay.sh"/>
-            <div id="false-input"></div>
-        </div>
-            
-            <ul id="list">
-        </ul>
-        
-        </div>
-      <script>
-          var input = document.getElementById('input');
-var list = document.getElementById('list');
-var false_input = document.getElementById('false-input');
+      <ul id="list"></ul>
+    </div>
+    <script>
+      var input = document.getElementById("input");
+      var list = document.getElementById("list");
+      var false_input = document.getElementById("false-input");
 
-var initialised = false;
+      var initialised = false;
 
-document.addEventListener('click', () => {
-  if(!initialised) {
-   autoplay();
-    initialised = true;
-  }});
+      document.addEventListener("click", () => {
+        if (!initialised) {
+          autoplay();
+          initialised = true;
+        }
+      });
 
-var about = `<p>Hello and welcome! My name is Arran, I am currently working as a Front End Developer at ProdPad. Let's chat over beer sometime! 🍺</p><br>`
+      var about = `<p>Hello and welcome! My name is Arran, I am currently working as a Front End Developer at ProdPad. Let's chat over beer sometime! 🍺</p><br>`;
 
-var work = `<p>[Front end Developer @ ProdPad - <i>2018 to present</i>]<br>
-Vue.js developer & JavaScript developer (es6+). I am tasked with creating beautifully designed fully functional features throughout a SAAS application designed to improve product management. Use of Node.js to create events for event sourced infrastructure.</p><br>`
+      var work = `<p>[Front end Developer @ ProdPad - <i>2018 to present</i>]<br>
+Vue.js developer & JavaScript developer (es6+). I am tasked with creating beautifully designed fully functional features throughout a SAAS application designed to improve product management. Use of Node.js to create events for event sourced infrastructure.</p><br>`;
 
-var projects = `<p>Github: <a target="_blank" rel="noopener" href="https://github.co.uk/arrangravestock">https://github.co.uk/arrangravestock</a> <br>
+      var projects = `<p>Github: <a target="_blank" rel="noopener" href="https://github.co.uk/arrangravestock">https://github.co.uk/arrangravestock</a> <br>
 Raspberry pi deployment service: <a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/pi-deploy">https://github.com/ArranGravestock/pi-deploy</a> <br>
 Notekeep: <a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/websocket-notes">https://github.com/ArranGravestock/websocket-notes</a> <br>
 Squareman: <a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/path-finding-aiie">https://github.com/ArranGravestock/path-finding-aiie</a> <br>
 Home automation: [<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-server">https://github.com/ArranGravestock/home-model-server</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-client">https://github.com/ArranGravestock/home-model-client</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-api">https://github.com/ArranGravestock/home-model-api</a><br>
-]</p><br>`
+<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-server">https://github.com/ArranGravestock/home-model-server</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-client">https://github.com/ArranGravestock/home-model-client</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/ArranGravestock/home-model-api">https://github.com/ArranGravestock/home-model-api</a><br>
+]</p><br>`;
 
-var socials = `<p>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/arran-gravestock-926899115">https://www.linkedin.com/in/arran-gravestock-926899115</a><br>
+      var socials = `<p>LinkedIn: <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/arran-gravestock-926899115">https://www.linkedin.com/in/arran-gravestock-926899115</a><br>
 Twitter: <a target="_blank" rel="noopener" href="https://twitter.com/arrangravestock">https://twitter.com/arrangravestock</a><br>
 Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/">https://arrangravestock.co.uk</a><br>
-</p><br>`
+</p><br>`;
 
-var education = `<p>[BSc (Hons) Computer Science: <i>2.1</i> - University of Brighton]<p>
-<p>[Dissertation] Created a Progressive Web Application (PWA) with React.js with SASS, which consumes data through a custom Express-js web API to increase the user experience in smart-products; reducing product interaction from ‘many-to-many’ to ‘one-to-one’.  A Raspberry Pi 3 (acts as the hub for components) using Node.js consumes sensor and I/O data, to automate and increase security in your home which stores real-time data using MySQL. The data is analysed through the PWA providing real-time readings and statistical data about their home.</p><br>`
+      var education = `<p>[BSc (Hons) Computer Science: <i>2.1</i> - University of Brighton]<p>
+<p>[Dissertation] Created a Progressive Web Application (PWA) with React.js with SASS, which consumes data through a custom Express-js web API to increase the user experience in smart-products; reducing product interaction from ‘many-to-many’ to ‘one-to-one’.  A Raspberry Pi 3 (acts as the hub for components) using Node.js consumes sensor and I/O data, to automate and increase security in your home which stores real-time data using MySQL. The data is analysed through the PWA providing real-time readings and statistical data about their home.</p><br>`;
 
+      input.addEventListener("keypress", function(e) {
+        if (e.keyCode == 13) {
+          if (input.value == "bash autoplay.sh") {
+            autoplay();
+          }
 
-input.addEventListener('keypress', function(e) {
-  if (e.keyCode == 13) {
-    if(input.value == 'bash autoplay.sh') {
-      
-      autoplay();
-    }
-    
-    input.value = '';
-  }
-})
+          input.value = "";
+        }
+      });
 
-function autoplay() {
- 
-  var typewriter = new Typewriter(false_input, {
-    loop: false,
-    cursor: ''
-  });
-  
-  var type_wrapper = document.getElementsByClassName('Typewriter__wrapper')[0]
-  
-  input.classList.add('hide');
-  
-  typewriter.typeString('more /Documents/about.txt')
-    .pauseFor(200)
-    .callFunction(() => {
-      type_wrapper.innerHTML = ''; 
-      appendLi(list, `<i>more /Documents/about.txt</i>`, false); 
-      appendLi(list, about, true)
-    })
-  
-    .typeString('more /Documents/work.txt')
-    .pauseFor(200)
-    .callFunction(() => {
-      type_wrapper.innerHTML = '';
-      appendLi(list, `<i>more /Documents/work.txt</i>`, false);
-      appendLi(list, work, true);
-    })
-    //.pauseFor(4000)
+      function autoplay() {
+        var typewriter = new Typewriter(false_input, {
+          loop: false,
+          cursor: ""
+        });
 
-    .typeString('more /Documents/education.txt')
-    .pauseFor(200)
-    .callFunction(() => {
-      type_wrapper.innerHTML = '';
-      appendLi(list, `<i>more /Documents/education.txt</i>`, false);
-      appendLi(list, education, true);
-    })
-    //.pauseFor(4000)
-  
-    .typeString('more /Documents/projects.txt')
-    .pauseFor(200)
-    .callFunction(() => {
-      type_wrapper.innerHTML = '';
-      appendLi(list, `<i>more /Documents/projects.txt</i>`, false);
-      appendLi(list, projects, true);
-    })
-    //.pauseFor(4000)
+        var type_wrapper = document.getElementsByClassName(
+          "Typewriter__wrapper"
+        )[0];
 
-    .typeString('more /Documents/socials.txt')
-    .pauseFor(200)
-    .callFunction(() => {
-      type_wrapper.innerHTML = '';
-      appendLi(list, `<i>more /Documents/socials.txt</i>`, false);
-      appendLi(list, socials, true);
-    })
-    //.pauseFor(3000)
+        input.classList.add("hide");
 
+        typewriter
+          .typeString("cat /Documents/about.txt")
+          .pauseFor(200)
+          .callFunction(() => {
+            type_wrapper.innerHTML = "";
+            appendLi(list, `<i>cat /Documents/about.txt</i>`, false);
+            appendLi(list, about, true);
+          })
 
-  
-    .start();
-}
+          .typeString("cat /Documents/work.txt")
+          .pauseFor(200)
+          .callFunction(() => {
+            type_wrapper.innerHTML = "";
+            appendLi(list, `<i>cat /Documents/work.txt</i>`, false);
+            appendLi(list, work, true);
+          })
+          //.pauseFor(4000)
 
+          .typeString("cat /Documents/education.txt")
+          .pauseFor(200)
+          .callFunction(() => {
+            type_wrapper.innerHTML = "";
+            appendLi(list, `<i>cat /Documents/education.txt</i>`, false);
+            appendLi(list, education, true);
+          })
+          //.pauseFor(4000)
 
-function appendLi(ul, text, renderRoot) {
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(''));
-  li.innerHTML = text;
-  
-  if(renderRoot) {
-    li.classList.add('hide-root');
-  }
-  
-  ul.appendChild(li);
-}
-      </script>
+          .typeString("cat /Documents/projects.txt")
+          .pauseFor(200)
+          .callFunction(() => {
+            type_wrapper.innerHTML = "";
+            appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
+            appendLi(list, projects, true);
+          })
+          //.pauseFor(4000)
+
+          .typeString("cat /Documents/socials.txt")
+          .pauseFor(200)
+          .callFunction(() => {
+            type_wrapper.innerHTML = "";
+            appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
+            appendLi(list, socials, true);
+          })
+          //.pauseFor(3000)
+
+          .start();
+      }
+
+      function appendLi(ul, text, renderRoot) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(""));
+        li.innerHTML = text;
+
+        if (renderRoot) {
+          li.classList.add("hide-root");
+        }
+
+        ul.appendChild(li);
+      }
+    </script>
     <!-- Content -->
   </body>
 </html>
