@@ -30,13 +30,13 @@
 
     <script>
     /* Shapes */
-    var svgContainer = document.getElementById('svgContainer');
-    var animItem = bodymovin.loadAnimation({
-      wrapper: svgContainer,
-      animType: 'svg',
-      loop: true,
-      path: 'https://arrangravestock.co.uk/intro-test-no-bg.json'
-    });
+      lottie.loadAnimation({
+        container: document.getElementById('svgContainer'), // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://arrangravestock.co.uk/intro-test-no-bg.json' // the path to the animation json
+      });
 
     </script>
     <!-- Content -->
