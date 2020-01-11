@@ -108,7 +108,7 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
           appendLi(list, `<i>cat /Documents/projects.txt</i>`, false);
           appendLi(list, projects, true);
 
-          appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
+          appendLi(list, `<i>cat /Documents/more-info.txt</i>`, false);
           appendLi(list, socials, true);
         } else {
           localStorage.setItem("skip", "true");
@@ -160,11 +160,11 @@ Blog: <a target="_blank" rel="noopener" href="https://arrangravestock.co.uk/blog
               appendLi(list, projects, true);
             })
 
-            .typeString("cat /Documents/socials.txt")
+            .typeString("cat /Documents/more-info.txt")
             .pauseFor(200)
             .callFunction(() => {
               type_wrapper.innerHTML = "";
-              appendLi(list, `<i>cat /Documents/socials.txt</i>`, false);
+              appendLi(list, `<i>cat /Documents/more-info.txt</i>`, false);
               appendLi(list, socials, true);
             })
             .callFunction(() => {
